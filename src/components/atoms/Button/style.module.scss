@@ -7,6 +7,9 @@
   border: 1px solid #e3e3e3;
   background-color: #fff;
   color: #3d3d3d;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .primary {
@@ -15,15 +18,27 @@
   color: #fff;
 }
 
+.icon {
+  &.small {
+    padding: 3px 5px;
+  }
+  &.medium {
+    padding: 5px 10px;
+  }
+  &.large {
+    padding: 8px 12px;
+  }
+}
+
 .small {
   padding: 3px 10px;
-  min-height: 24px;
+  height: 24px;
 }
 .medium {
   padding: 5px 20px;
-  min-height: 28px;
+  height: 28px;
 }
 .large {
   padding: 8px 30px;
-  min-height: 32px;
+  height: 32px;
 }

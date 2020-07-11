@@ -1,19 +1,22 @@
-import React, { CSSProperties } from 'react'
+import React from 'react'
 
 import classNames from 'classnames'
 
 import styles from './style.module.scss'
+import { calculateSpacing } from '../../../utils/style'
 
 export interface IProps {
+  margin?: number[]
   fontSize?: number
-  fontBold?: boolean
+  fontWeight?: number
   className?: string
   style?: object
 }
 
 const Span: React.FC<IProps> = ({
   fontSize = 13,
-  fontBold = false,
+  fontWeight = 300,
+  margin = [0],
   style,
   children,
   className,
@@ -21,9 +24,10 @@ const Span: React.FC<IProps> = ({
   const classProps = classNames(styles.default, className)
   const styleProps = {
     ...style,
+    margin: calculateSpacing(margin),
     fontSize: `${fontSize}px`,
-    fontWeight: fontBold ? 'bold' : 'normal',
-  } as CSSProperties
+    fontWeight,
+  }
 
   return (
     <span className={classProps} style={styleProps}>
