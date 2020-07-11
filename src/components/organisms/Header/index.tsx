@@ -26,16 +26,16 @@ const Header: React.FC<IProps> = ({
   followCount,
 }) => {
   const storyElements = stories.map((story) => (
-    <Avatar border={0} radius={50}>
-      <Image src={image} alt="유저이미지" />
+    <Avatar>
+      <Image src={image} alt="유저이미지" radius={50} />
     </Avatar>
   ))
 
   return (
     <Block padding={[10]} direction={Direction.COLUMN}>
       <Block sort={[VSort.CENTER, HSort.SPACE_BETWEEN]} margin={[0, 0, 8, 0]}>
-        <Avatar border={0} radius={50} size={100}>
-          <Image src={image} alt="유저이미지" />
+        <Avatar size={100}>
+          <Image src={image} alt="유저이미지" radius={50} />
         </Avatar>
         <Block>
           <Block direction={Direction.COLUMN} padding={[0, 20]}>

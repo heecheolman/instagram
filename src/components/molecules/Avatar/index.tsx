@@ -3,24 +3,22 @@ import React from 'react'
 import classNames from 'classnames'
 
 import Block from '../Block'
-import style from './style.module.scss'
+import styles from './style.module.scss'
 
 export interface IProps {
   size?: number
-  border: number
-  radius: number
   className?: string
 }
 
 const Avatar: React.FC<IProps> = ({ size = 30, children, className }) => {
-  const classProps = classNames(style.default, className)
-  const sizeStyle = {
+  const classProps = classNames(styles.default, className)
+  const styleProps = {
     width: `${size}px`,
     height: `${size}px`,
   }
 
   return (
-    <Block className={classProps} style={sizeStyle}>
+    <Block className={classProps} style={styleProps}>
       {children}
     </Block>
   )

@@ -1,9 +1,13 @@
 import React from 'react'
 
 import Arrow from '../../../assets/icons/arrow.svg'
+import Grid from '../../../assets/icons/grid.svg'
+import Visitor from '../../../assets/icons/visitor.svg'
 
 export enum IconType {
   ARROW = (Arrow as unknown) as IconType,
+  GRID = (Grid as unknown) as IconType,
+  VISITOR = (Visitor as unknown) as IconType,
 }
 
 interface IProps {
