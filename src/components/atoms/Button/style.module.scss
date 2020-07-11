@@ -1,9 +1,29 @@
 .default {
-  color: #fff;
+  outline: none;
+  border: none;
   border-radius: 4px;
-  background-color: black;
+  cursor: pointer;
+
+  border: 1px solid #e3e3e3;
+  background-color: #fff;
+  color: #3d3d3d;
 }
 
 .primary {
-  background-color: blue;
+  border: 1px solid transparent;
+  background-color: #0095f6;
+  color: #fff;
+}
+
+.small {
+  padding: 3px 10px;
+  min-height: 24px;
+}
+.medium {
+  padding: 5px 20px;
+  min-height: 28px;
+}
+.large {
+  padding: 8px 30px;
+  min-height: 32px;
 }

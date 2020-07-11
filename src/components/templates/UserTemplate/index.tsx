@@ -2,6 +2,7 @@ import React from 'react'
 
 import Header from '../../organisms/Header'
 import Contents from '../../organisms/Contents'
+import Block, { Direction } from '../../molecules/Block'
 
 interface IProps {
   profile: any
@@ -11,10 +12,10 @@ interface IProps {
 
 const UserTemplate: React.FC<IProps> = ({ profile, stories, contents }) => {
   return (
-    <div>
+    <Block direction={Direction.COLUMN}>
       <Header {...profile} stories={stories} />
       <Contents />
-    </div>
+    </Block>
   )
 }
 

@@ -1,11 +1,5 @@
 .default {
   display: flex;
-}
-
-.row {
-  flex-direction: row;
-}
-
-.column {
-  flex-direction: column;
+  width: 100%;
+  height: auto;
 }
