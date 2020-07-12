@@ -1,0 +1,18 @@
+$spacing: (0, 4, 8, 12, 16, 20, 24, 28);
+$directions: (
+  't': 'top',
+  'r': 'right',
+  'b': 'bottom',
+  'l': 'left',
+);
+
+@each $space in $spacing {
+  @each $dir, $dir-selector in $directions {
+    .m-#{$dir}-#{$space} {
+      margin-#{$dir-selector}: #{$space}px;
+    }
+    .p-#{$dir}-#{$space} {
+      margin-#{$dir-selector}: #{$space}px;
+    }
+  }
+}

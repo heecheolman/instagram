@@ -2,8 +2,8 @@ import React from 'react'
 
 import classNames from 'classnames'
 
+import { calculateSpacing } from '../../lib'
 import styles from './style.module.scss'
-import { calculateSpacing } from '../../../utils/style'
 
 export enum Direction {
   ROW = 'row',
@@ -16,6 +16,7 @@ export enum VSort {
   BOTTOM,
   SPACE_BETWEEN,
   SPACE_AROUND,
+  NORMAL,
 }
 
 export enum HSort {
@@ -24,6 +25,7 @@ export enum HSort {
   RIGHT,
   SPACE_BETWEEN,
   SPACE_AROUND,
+  NORMAL,
 }
 
 interface IProps {
@@ -54,6 +56,9 @@ function calculateSort(sort: [VSort, HSort]): string[] {
     case VSort.SPACE_AROUND:
       vertical = 'space-around'
       break
+    case VSort.NORMAL:
+      vertical = 'normal'
+      break
   }
 
   switch (hSort) {
@@ -68,6 +73,9 @@ function calculateSort(sort: [VSort, HSort]): string[] {
       break
     case HSort.SPACE_AROUND:
       horizontal = 'space-around'
+      break
+    case HSort.NORMAL:
+      horizontal = 'normal'
       break
   }
 

@@ -2,8 +2,8 @@ import React from 'react'
 
 import classNames from 'classnames'
 
+import { calculateSpacing } from '../../lib'
 import styles from './style.module.scss'
-import { calculateSpacing } from '../../../utils/style'
 
 export enum ButtonType {
   SUBMIT = 'submit',
@@ -14,7 +14,6 @@ export enum ButtonType {
 export enum ButtonTheme {
   DEFAULT = 'default',
   PRIMARY = 'primary',
-  ICON = 'icon',
 }
 
 export enum ButtonSize {
@@ -30,7 +29,6 @@ export interface IProps {
   theme?: ButtonTheme
   size?: ButtonSize
   children?: React.ReactNode
-  style?: object
   className?: string
 }
 
@@ -39,7 +37,6 @@ const Button: React.FC<IProps> = ({
   type = ButtonType.BUTTON,
   theme = ButtonTheme.DEFAULT,
   size = ButtonSize.MEDIUM,
-  style = {},
   children,
   className,
 }) => {
@@ -51,7 +48,6 @@ const Button: React.FC<IProps> = ({
   )
 
   const styleProps = {
-    ...style,
     margin: calculateSpacing(margin),
   }
 

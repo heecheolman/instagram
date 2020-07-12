@@ -1,34 +1,51 @@
 import React from 'react'
-import Block, { Direction } from '../../molecules/Block'
-import Image from '../../atoms/Image'
+
+import Block, { Direction, VSort, HSort } from '../../molecules/Block'
+import Feed from '../../../models/Feed'
+import FeedCell from '../../molecules/FeedCell'
 
 interface IProps {
-  postList: any[]
+  feeds: Feed[]
+  col?: number
 }
 
-const Contents: React.FC<IProps> = ({ postList }) => {
-  const gap = 1
+const Contents: React.FC<IProps> = ({ feeds, col = 3 }) => {
+  const ROW = Math.ceil(feeds.length / col)
+  const feedsCollection = []
+  for (let i = 0; i < ROW; i++) {
+    const row = []
+    for (let j = 0; j < col; j++) {
+      row.push(feeds[i * col + j])
+    }
+    feedsCollection.push(row)
+  }
 
-  const postsElement = postList.map((row, rowIndex) => {
-    const isLastRow = rowIndex === postList.length - 1
-    const rowPosts = row.map((post: { thumbnail: string }, index: number) => {
-      const isLastColumn = index === row.length - 1
+  const feedbackGridElement = feedsCollection.map((row: Feed[], rowIndex) => {
+    const feedRowElement = row.map((feed: Feed, colIndex) => {
       return (
-        <Block margin={[0, isLastColumn ? 0 : gap, 0, 0]} key={`post-${index}`}>
-          <Image src={post.thumbnail} alt="포스트"></Image>
-        </Block>
+        <FeedCell
+          key={`post-${rowIndex}-${colIndex}`}
+          image={(feed && feed.getImage()) || ''}
+          className={colIndex === col - 1 ? 'm-r-0' : 'm-r-4'}
+        />
       )
     })
     return (
-      <Block margin={[0, 0, isLastRow ? 0 : gap, 0]} key={`row-${rowIndex}`}>
-        {rowPosts}
+      <Block
+        sort={[VSort.NORMAL, HSort.NORMAL]}
+        key={`row-${rowIndex}`}
+        margin={[0, 0, rowIndex === ROW - 1 ? 0 : 4]}
+      >
+        {feedRowElement}
       </Block>
     )
   })
 
-  console.log(postsElement)
-
-  return <Block direction={Direction.COLUMN}>{postsElement}</Block>
+  return (
+    <Block direction={Direction.COLUMN} padding={[10]}>
+      {feedbackGridElement}
+    </Block>
+  )
 }
 
 export default Contents

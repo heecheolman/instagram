@@ -5,14 +5,14 @@ import Avatar from '../../molecules/Avatar'
 import Image from '../../atoms/Image'
 import Span from '../../atoms/Span'
 import Button, { ButtonTheme } from '../../atoms/Button'
-import Figure, { IconType } from '../../atoms/Figure'
+import IconButton from '../../molecules/IconButton'
 import P from '../../atoms/P'
+import { IconType } from '../../atoms/Figure'
 
 interface IProps {
   image: string
   description: string
-  stories: any[]
-  postCount: number
+  feedCount: number
   followerCount: number
   followCount: number
 }
@@ -20,17 +20,10 @@ interface IProps {
 const Header: React.FC<IProps> = ({
   image,
   description,
-  stories,
-  postCount,
+  feedCount,
   followerCount,
   followCount,
 }) => {
-  const storyElements = stories.map((story) => (
-    <Avatar>
-      <Image src={image} alt="유저이미지" radius={50} />
-    </Avatar>
-  ))
-
   return (
     <Block padding={[10]} direction={Direction.COLUMN}>
       <Block sort={[VSort.CENTER, HSort.SPACE_BETWEEN]} margin={[0, 0, 8, 0]}>
@@ -40,7 +33,7 @@ const Header: React.FC<IProps> = ({
         <Block>
           <Block direction={Direction.COLUMN} padding={[0, 20]}>
             <Span fontWeight={500} fontSize={16}>
-              {postCount}
+              {feedCount}
             </Span>
             <Span>게시물</Span>
           </Block>
@@ -62,20 +55,17 @@ const Header: React.FC<IProps> = ({
         <P>{description}</P>
       </Block>
       <Block sort={[VSort.CENTER, HSort.LEFT]}>
-        <Button theme={ButtonTheme.PRIMARY} style={{ flex: 1 }}>
+        <Button className="flex-full" theme={ButtonTheme.PRIMARY}>
           팔로우
         </Button>
-        <Button style={{ flex: 1 }} margin={[0, 0, 0, 8]}>
+        <Button className="flex-full" margin={[0, 0, 0, 8]}>
           메시지
         </Button>
-        <Button style={{ flex: 1 }} margin={[0, 0, 0, 8]}>
+        <Button className="flex-full" margin={[0, 0, 0, 8]}>
           이메일
         </Button>
-        <Button margin={[0, 0, 0, 8]} theme={ButtonTheme.ICON}>
-          <Figure width={12} height={12} type={IconType.ARROW}></Figure>
-        </Button>
+        <IconButton iconType={IconType.ARROW} margin={[0, 0, 0, 8]} />
       </Block>
-      <Block>{storyElements}</Block>
     </Block>
   )
 }

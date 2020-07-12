@@ -6,17 +6,32 @@ import TabList from '../../molecules/TabList'
 import Tab from '../../atoms/Tab'
 import Block, { Direction } from '../../molecules/Block'
 import Figure, { IconType } from '../../atoms/Figure'
+import User from '../../../models/User'
+import Feed from '../../../models/Feed'
 
 interface IProps {
-  profile: any
-  stories: any[]
-  postList: any[]
+  user: User
+  feeds: Feed[]
 }
 
-const UserTemplate: React.FC<IProps> = ({ profile, stories, postList }) => {
+const UserTemplate: React.FC<IProps> = ({ user, feeds }) => {
+  const {
+    feed: feedCount,
+    follow: followCount,
+    follower: followerCount,
+  } = user.getCount()
+
+  const headerProps = {
+    image: user.getImage(),
+    description: user.getDescription(),
+    feedCount,
+    followCount,
+    followerCount,
+  }
+
   return (
     <Block direction={Direction.COLUMN}>
-      <Header {...profile} stories={stories} />
+      <Header {...headerProps} />
       <TabList position="sticky" top={0} margin={[0, 0, 2, 0]}>
         <Tab active={true}>
           <Figure width={15} height={15} type={IconType.GRID} />
@@ -25,7 +40,7 @@ const UserTemplate: React.FC<IProps> = ({ profile, stories, postList }) => {
           <Figure width={15} height={15} type={IconType.VISITOR} />
         </Tab>
       </TabList>
-      <Contents postList={postList} />
+      <Contents feeds={feeds} />
     </Block>
   )
 }
