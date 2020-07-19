@@ -1,9 +1,14 @@
 import { userResponse } from '../__MOCK__'
+import { useDispatch, useSelector } from 'react-redux'
 
+import { RootState } from '../store'
+import { update } from '../store/reducer'
 import User from '../models/User'
 
 function useUser() {
   const user = new User(userResponse)
+  const dispatch = useDispatch()
+  const dummyState = useSelector((rootState: RootState) => rootState.text)
 
   const {
     feed: feedCount,
@@ -19,7 +24,11 @@ function useUser() {
     followerCount,
   }
 
-  return [userInfo]
+  const updateFunc = () => {
+    dispatch(update({ text: 'Siba' }))
+  }
+
+  return { userInfo, dummyState, updateFunc }
 }
 
 export default useUser
