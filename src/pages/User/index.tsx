@@ -2,14 +2,13 @@ import React from 'react'
 
 import UserTemplate from '../../components/templates/UserTemplate'
 import Block from '../../components/molecules/Block'
-import { userResponse, feedsResponse } from '../../__MOCK__'
 
-import User from '../../models/User'
-import Feed from '../../models/Feed'
+import useUser from '../../hooks/useUser'
+import useFeed from '../../hooks/useFeed'
 
 const UserPage: React.FC = () => {
-  const user = new User(userResponse)
-  const feeds = feedsResponse.map((feed) => new Feed(feed))
+  const [user] = useUser()
+  const [feeds] = useFeed()
 
   return (
     <Block>

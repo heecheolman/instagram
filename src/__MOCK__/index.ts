@@ -19,7 +19,7 @@ const images = [
 export const userResponse: IUserResponse = {
   name: '크리스',
   image:
-    'https://lh3.googleusercontent.com/proxy/x_F3MCIGfdN2H_uip3K-wSGhOMCBRcq8n3htKSYR9V3kmKvsRWbhVNPUdNAiHZ82myI2mAIfcOCaggFcAgxcunhkphduLcLWx4dJwUd_1IgbGCP1USEaiafUOPXcpz425205snxU4ycsXzhzV3snFmyqgiLEGOCy7i1qHAbYpXM',
+    'https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/74899892_2375938672535537_7859930332251091581_n.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=105&_nc_ohc=sXU60_PQmjQAX-0eud5&oh=0cfe093fabba4512bf34115ee9e46f11&oe=5F32736F',
   followerCount: 347,
   followCount: 743,
   feedCount: 40,
