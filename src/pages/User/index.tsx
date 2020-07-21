@@ -7,17 +7,22 @@ import useUser from '../../hooks/useUser'
 import useFeed from '../../hooks/useFeed'
 
 const UserPage: React.FC = () => {
-  const { userInfo, updateFunc, dummyState } = useUser()
-  const [feeds] = useFeed()
+  const { user, getUser } = useUser()
+  const { feeds, fetch } = useFeed()
+
+  const fetchFunc = async () => {
+    const result = await fetch()
+    console.log('result', result)
+  }
 
   useEffect(() => {
-    updateFunc()
+    getUser()
+    fetchFunc()
   }, [])
 
   return (
     <Block>
-      {dummyState}
-      <UserTemplate user={userInfo} feeds={feeds} />
+      <UserTemplate user={user.json()} feeds={feeds} />
     </Block>
   )
 }

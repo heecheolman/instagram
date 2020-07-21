@@ -2,33 +2,19 @@ import { userResponse } from '../__MOCK__'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState } from '../store'
-import { update } from '../store/reducer'
 import User from '../models/User'
+import { fetchUser } from '../store/reducer'
 
 function useUser() {
-  const user = new User(userResponse)
   const dispatch = useDispatch()
-  const dummyState = useSelector((rootState: RootState) => rootState.text)
 
-  const {
-    feed: feedCount,
-    follow: followCount,
-    follower: followerCount,
-  } = user.getCount()
-
-  const userInfo = {
-    image: user.getImage(),
-    description: user.getDescription(),
-    feedCount,
-    followCount,
-    followerCount,
+  const user = useSelector((rootState: RootState) => rootState.user)
+  const getUser = () => {
+    console.log('getUser')
+    dispatch(fetchUser.request(''))
   }
 
-  const updateFunc = () => {
-    dispatch(update({ text: 'Siba' }))
-  }
-
-  return { userInfo, dummyState, updateFunc }
+  return { user, getUser }
 }
 
 export default useUser
