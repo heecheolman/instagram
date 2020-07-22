@@ -27,18 +27,16 @@ export interface IEmployee {
 }
 
 export const fetchEmployees = (): Promise<IEmployeesResponse> => {
-  return fetch('http://dummy.restapiexample.com/api/v1/employees').then(
-    (response) => {
-      try {
-        if (!response.ok) {
-          throw new Error(response.statusText)
-        }
-        return response.json() as Promise<IEmployeesResponse>
-      } catch (e) {
+  return fetch('user/1').then((response) => {
+    try {
+      if (!response.ok) {
         throw new Error(response.statusText)
       }
+      return response.json() as Promise<IEmployeesResponse>
+    } catch (e) {
+      throw new Error(response.statusText)
     }
-  )
+  })
 }
 
 export interface IEmployeeRequest {}
